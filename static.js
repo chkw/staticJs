@@ -36,6 +36,31 @@ function eliminateDuplicates(arr) {
 }
 
 /**
+ * Keep items that appear multiple times.  Original order of items is lost.
+ */
+function keepReplicates(arr, threshold) {
+    var counts = {};
+    // tally counts
+    for (var i = 0; i < arr.length; i++) {
+        var value = arr[i];
+        if ( value in counts) {
+        } else {
+            counts[value] = 0;
+        }
+        counts[value]++;
+    }
+    // apply threshold
+    threshold = (threshold == null) ? 2 : threshold;
+    var outList = [];
+    for (var value in counts) {
+        if (counts[value] >= threshold) {
+            outList.push(value);
+        }
+    }
+    return outList;
+}
+
+/**
  * Get an object with UrlQueryString data.
  */
 function getQueryObj() {
