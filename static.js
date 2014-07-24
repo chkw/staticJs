@@ -5,6 +5,64 @@
  */
 
 /**
+ * MySQL style date
+ */
+function getDateTime() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    if (month.toString().length == 1) {
+        var month = '0' + month;
+    }
+    if (day.toString().length == 1) {
+        var day = '0' + day;
+    }
+    if (hour.toString().length == 1) {
+        var hour = '0' + hour;
+    }
+    if (minute.toString().length == 1) {
+        var minute = '0' + minute;
+    }
+    if (second.toString().length == 1) {
+        var second = '0' + second;
+    }
+    var dateTime = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+    return dateTime;
+}
+
+/**
+ * Date in written style.
+ */
+function todaysDate() {
+    var months = new Array();
+    months[1] = "January";
+    months[2] = "February";
+    months[3] = "March";
+    months[4] = "April";
+    months[5] = "May";
+    months[6] = "June";
+    months[7] = "July";
+    months[8] = "August";
+    months[9] = "September";
+    months[10] = "October";
+    months[11] = "November";
+    months[12] = "December";
+    var todaysdate = new Date();
+    var date = todaysdate.getDate();
+    var day = todaysdate.getDay() + 1;
+    var month = todaysdate.getMonth() + 1;
+    var yy = todaysdate.getYear();
+    var year = (yy < 1000) ? yy + 1900 : yy;
+    var year2 = year - (2000 * 1);
+    year2 = (year2 < 10) ? "0" + year2 : year2;
+    return (months[month] + " " + date + ", " + year);
+}
+
+/**
  * Turn serializedJson string into a JSON object.
  */
 function parseJson(serializedJson) {
@@ -229,4 +287,43 @@ function allAngledRectSvgPath(x, y, width, height) {
     pathString += "v" + (-1 * (height - 2 * pad));
     pathString += 'z';
     return pathString;
+}
+
+/**
+ * Cookie methods taken from:
+ * <ul>
+ * <li>http://jquery-howto.blogspot.com/2010/09/jquery-cookies-getsetdelete-plugin.html
+ * </li>
+ * <li>http://www.quirksmode.org/js/cookies.html
+ * </li>
+ * </ul>
+ * @param {Object} name
+ * @param {Object} value
+ * @param {Object} days
+ */
+function setCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    } else
+        var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ')
+        c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function deleteCookie(name) {
+    setCookie(name, "", -1);
 }
