@@ -327,3 +327,15 @@ function getCookie(name) {
 function deleteCookie(name) {
     setCookie(name, "", -1);
 }
+
+/**
+ * Get an object's attribute keys.
+ * @param {Object} obj
+ */
+function getKeys(obj) {
+    var keys = [];
+    for (var key in obj) {
+        keys.push(key);
+    }
+    return keys;
+}
