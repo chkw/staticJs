@@ -4,6 +4,11 @@
  * Finally decided to keep static methods in a separate js file.
  */
 
+var svgNamespaceUri = 'http://www.w3.org/2000/svg';
+
+// use with "xlink:href" for images in svg as in <http://www.w3.org/Graphics/SVG/WG/wiki/Href>
+var xlinkUri = "http://www.w3.org/1999/xlink";
+
 /**
  * Get an object's attribute keys.
  * @param {Object} obj
