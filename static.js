@@ -62,6 +62,10 @@ function keepReplicates(arr, threshold) {
     return outList;
 }
 
+function beginsWith(str, prefix) {
+    return str.indexOf(prefix) === 0;
+}
+
 function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
