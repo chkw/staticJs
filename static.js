@@ -195,6 +195,25 @@ function lengthOfLongestString(arrayOfStrings) {
 
 // TODO URL and query strings
 
+/**
+ * Simple asynchronous GET.  callbackFunc takes the responseText as parameter.
+ */
+function simpleAsyncGet(url, callbackFunc) {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE) {
+            callbackFunc(request.responseText);
+        }
+    };
+    request.open('GET', url, true);
+    request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    // Tells server that this call is made for ajax purposes.
+    // Most libraries like jQuery/Prototype/Dojo do this
+    request.send(null);
+    // No data needs to be sent along with the request.
+}
+
 /*
  * Synchronous GET
  */
