@@ -98,6 +98,38 @@ function getListBoxSelectedValues(listboxElement) {
     return selectedValues;
 }
 
+// TODO XML
+
+/**
+ * Get an XML DOM from an XML file.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
+ */
+function getXmlDom_url(url) {
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("GET", url, false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML;
+    return xmlDoc;
+}
+
+/**
+ * Get an XML DOM from a text string.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
+ */
+function getXmlDom_string(txt) {
+    if (window.DOMParser) {
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(txt, "text/xml");
+    } else {// Internet Explorer
+        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+        xmlDoc.async = false;
+        xmlDoc.loadXML(txt);
+    }
+    return xmlDoc;
+}
+
 // TODO date & time
 
 /**
