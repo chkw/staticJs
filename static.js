@@ -207,7 +207,7 @@ function createDivElement(divId, divClass) {
 }
 
 /**
- * Assumes the parents are divs.
+ * Assumes the parents are divs.  Requires jQuery.
  */
 function swapContainingDivs(nodeA, nodeB) {
     var parentA = nodeA.parentNode;
