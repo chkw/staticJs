@@ -10,7 +10,7 @@ var svgNamespaceUri = 'http://www.w3.org/2000/svg';
 var xlinkUri = "http://www.w3.org/1999/xlink";
 
 /**
- * Get an object's attribute keys.
+ * Get an object's attribute keys in an array.
  * @param {Object} obj
  */
 function getKeys(obj) {
@@ -97,6 +97,64 @@ function getListBoxSelectedValues(listboxElement) {
     }
     return selectedValues;
 }
+
+/**
+ * centered RGBa color mapper
+ */
+function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
+    var mapper = null;
+
+    var centerV = (centerVal == null) ? 0 : centerVal;
+    var minNegV = (minNegVal == null) ? -1.96 : minNegVal;
+    var maxPosV = (maxPosVal == null) ? 1.96 : maxPosVal;
+
+    mapper = function(val) {
+        var a = 1;
+        var r = 169;
+        var g = 169;
+        var b = 169;
+
+        var v = parseFloat(val);
+
+        if ((v == null) || (v != v)) {
+            // null or NaN values
+        } else if (v > centerV) {
+            r = 255;
+            g = 0;
+            b = 0;
+            if ((maxPosVal != null) && (v > maxPosV)) {
+                a = 1;
+            } else {
+                a = (v - centerV) / (maxPosV - centerV);
+                a = Math.abs(a);
+                if (log) {
+                    a = Math.log(a);
+                }
+            }
+        } else if (v < centerV) {
+            r = 0;
+            g = 0;
+            b = 255;
+            if ((minNegVal != null) && (v < minNegV)) {
+                a = 1;
+            } else {
+                a = (v - centerV) / (minNegV - centerV);
+                a = Math.abs(a);
+                if (log) {
+                    a = Math.log(a);
+                }
+            }
+        } else {
+            r = 255;
+            g = 255;
+            b = 255;
+            a = 1;
+        }
+        return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+    };
+
+    return mapper;
+};
 
 // TODO XML
 
