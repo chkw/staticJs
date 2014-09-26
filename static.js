@@ -10,6 +10,26 @@ var svgNamespaceUri = 'http://www.w3.org/2000/svg';
 var xlinkUri = "http://www.w3.org/1999/xlink";
 
 /**
+ * Check if an object has the specified property.
+ */
+function hasOwnProperty(obj, prop) {
+    var proto = obj.__proto__ || obj.constructor.prototype;
+    return ( prop in obj) && (!( prop in proto) || proto[prop] !== obj[prop]);
+}
+
+/**
+ * Check if an array contains specified object.
+ */
+function isObjInArray(array, obj) {
+    var result = false;
+    var index = array.indexOf(obj);
+    if (index >= 0) {
+        result = true;
+    }
+    return result;
+}
+
+/**
  * Get an object's attribute keys in an array.
  * @param {Object} obj
  */
@@ -99,7 +119,7 @@ function getListBoxSelectedValues(listboxElement) {
 }
 
 /**
- * centered RGBa color mapper
+ * centered RGBa color mapper.  Defaults to significant Z-score range.
  */
 function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
     var mapper = null;
@@ -154,6 +174,21 @@ function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
     };
 
     return mapper;
+};
+
+function setupQuantileColorMapper(allDataValues, palette) {
+    // color scale
+    var colors = palette;
+    if (colors == null) {
+        // colors = ["#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#081d58"];
+        colors = ["rgb(255,255,217)", "rgb(237,248,177)", "rgb(199,233,180)", "rgb(127,205,187)", "rgb(65,182,196)", "rgb(29,145,192)", "rgb(34,94,168)", "rgb(37,52,148)", "rgb(8,29,88)"];
+    }
+    var buckets = colors.length;
+    var colorScale = d3.scale.quantile().domain([0, buckets - 1, d3.max(allDataValues, function(d) {
+        return parseFloat(d);
+    })]).range(colors);
+
+    return colorScale;
 };
 
 // TODO XML
