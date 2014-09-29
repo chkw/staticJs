@@ -42,6 +42,7 @@ function getKeys(obj) {
 }
 
 /**
+ * The ordering of elements is not guaranteed.
  * From https://dreaminginjavascript.wordpress.com/2008/08/22/eliminating-duplicates/
  * @param {Object} arr
  */
@@ -118,6 +119,80 @@ function getListBoxSelectedValues(listboxElement) {
     return selectedValues;
 }
 
+// TODO comparator functions
+
+/**
+ *Compare as numbers
+ */
+var compareAsNumeric = function(a, b) {
+    var valA = a;
+    var valB = b;
+
+    // convert to numbers
+    var scoreA = parseFloat(valA);
+    var scoreB = parseFloat(valB);
+
+    if (isNumerical(scoreA) && (isNumerical(scoreB))) {
+        if (scoreA < scoreB) {
+            return -1;
+        }
+        if (scoreA > scoreB) {
+            return 1;
+        } else {
+            return 0;
+        }
+    } else {
+        // handle non-numericals
+        if (scoreA != scoreA && scoreB != scoreB) {
+            // both non-numerical, may be nulls
+            return 0;
+        } else if (scoreA != scoreA) {
+            return -1;
+        } else if (scoreB != scoreB) {
+            return 1;
+        }
+    }
+    // default scoring
+    return 0;
+};
+
+/**
+ * Compare as string
+ */
+var compareAsString = function(a, b) {
+    var valA = new String(a);
+    var valB = new String(b);
+
+    return valA.localeCompare(valB);
+};
+
+/**
+ * Compare as date
+ */
+var compareAsDate = function(a, b) {
+    var valA = a;
+    var valB = b;
+
+    if (valA == null) {
+        valA = '1000';
+    } else if (valA == '') {
+        valA = '1001';
+    }
+
+    if (valB == null) {
+        valB = '1000';
+    } else if (valB == '') {
+        valB = '1001';
+    }
+
+    var dateA = new Date(valA);
+    var dateB = new Date(valB);
+
+    return (dateA - dateB);
+};
+
+// TODO color mappers
+
 /**
  * centered RGBa color mapper.  Defaults to significant Z-score range.
  */
@@ -176,6 +251,9 @@ function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
     return mapper;
 };
 
+/**
+ * requires D3js
+ */
 function setupQuantileColorMapper(allDataValues, palette) {
     // color scale
     var colors = palette;
