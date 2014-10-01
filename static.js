@@ -223,7 +223,7 @@ function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
             r = 255;
             g = 0;
             b = 0;
-            if ((maxPosVal != null) && (v > maxPosV)) {
+            if (v > maxPosV) {
                 a = 1;
             } else {
                 a = (v - centerV) / (maxPosV - centerV);
@@ -236,7 +236,7 @@ function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
             r = 0;
             g = 0;
             b = 255;
-            if ((minNegVal != null) && (v < minNegV)) {
+            if (v < minNegV) {
                 a = 1;
             } else {
                 a = (v - centerV) / (minNegV - centerV);
