@@ -61,7 +61,7 @@ function eliminateDuplicates(arr) {
 /**
  * Keep items that appear multiple times.  Original order of items is lost.
  */
-function keepReplicates(arr, threshold) {
+function keepReplicates(arr, threshold, keepUniques) {
     var counts = {};
     // tally counts
     for (var i = 0; i < arr.length; i++) {
@@ -76,8 +76,14 @@ function keepReplicates(arr, threshold) {
     threshold = (threshold == null) ? 2 : threshold;
     var outList = [];
     for (var value in counts) {
-        if (counts[value] >= threshold) {
-            outList.push(value);
+        if ((keepUniques != null) && (keepUniques)) {
+            if (counts[value] < threshold) {
+                outList.push(value);
+            }
+        } else {
+            if (counts[value] >= threshold) {
+                outList.push(value);
+            }
         }
     }
     return outList;
