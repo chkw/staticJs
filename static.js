@@ -169,6 +169,12 @@ var compareAsString = function(a, b) {
     var valA = new String(a);
     var valB = new String(b);
 
+    if ((valA == 'null') && (valB != 'null')) {
+        return -1;
+    } else if ((valA != 'null') && (valB == 'null')) {
+        return 1;
+    }
+
     return valA.localeCompare(valB);
 };
 
