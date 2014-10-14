@@ -4,15 +4,15 @@
  * Finally decided to keep static methods in a separate js file.
  */
 
-var svgNamespaceUri = 'http://www.w3.org/2000/svg';
+svgNamespaceUri = 'http://www.w3.org/2000/svg';
 
 // use with "xlink:href" for images in svg as in <http://www.w3.org/Graphics/SVG/WG/wiki/Href>
-var xlinkUri = "http://www.w3.org/1999/xlink";
+xlinkUri = "http://www.w3.org/1999/xlink";
 
 /**
  * Check if an object has the specified property.
  */
-var hasOwnProperty = function(obj, prop) {
+hasOwnProperty = function(obj, prop) {
     var proto = obj.__proto__ || obj.constructor.prototype;
     return ( prop in obj) && (!( prop in proto) || proto[prop] !== obj[prop]);
 };
@@ -20,7 +20,7 @@ var hasOwnProperty = function(obj, prop) {
 /**
  * Check if an array contains specified object.
  */
-var isObjInArray = function(array, obj) {
+isObjInArray = function(array, obj) {
     var result = false;
     var index = array.indexOf(obj);
     if (index >= 0) {
@@ -33,7 +33,7 @@ var isObjInArray = function(array, obj) {
  * Get an object's attribute keys in an array.
  * @param {Object} obj
  */
-var getKeys = function(obj) {
+getKeys = function(obj) {
     var keys = [];
     for (var key in obj) {
         keys.push(key);
@@ -46,7 +46,7 @@ var getKeys = function(obj) {
  * From https://dreaminginjavascript.wordpress.com/2008/08/22/eliminating-duplicates/
  * @param {Object} arr
  */
-var eliminateDuplicates = function(arr) {
+eliminateDuplicates = function(arr) {
     var i, len = arr.length, out = [], obj = {};
 
     for ( i = 0; i < len; i++) {
@@ -61,7 +61,7 @@ var eliminateDuplicates = function(arr) {
 /**
  * Keep items that appear multiple times.  Original order of items is lost.
  */
-var keepReplicates = function(arr, threshold, keepUniques) {
+keepReplicates = function(arr, threshold, keepUniques) {
     var counts = {};
     // tally counts
     for (var i = 0; i < arr.length; i++) {
@@ -89,15 +89,15 @@ var keepReplicates = function(arr, threshold, keepUniques) {
     return outList;
 };
 
-var beginsWith = function(str, prefix) {
+beginsWith = function(str, prefix) {
     return str.indexOf(prefix) === 0;
 };
 
-var endsWith = function(str, suffix) {
+endsWith = function(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
-var isNumerical = function(val) {
+isNumerical = function(val) {
     var result = true;
     if (val == null || val === "") {
         return false;
@@ -114,7 +114,7 @@ var isNumerical = function(val) {
 /**
  * get the selected values of a list box control.
  */
-var getListBoxSelectedValues = function(listboxElement) {
+getListBoxSelectedValues = function(listboxElement) {
     var selectedValues = new Array();
     for (var i = 0; i < listboxElement.length; i++) {
         var option = listboxElement[i];
@@ -130,7 +130,7 @@ var getListBoxSelectedValues = function(listboxElement) {
 /**
  *Compare as numbers
  */
-var compareAsNumeric = function(a, b) {
+compareAsNumeric = function(a, b) {
     var valA = a;
     var valB = b;
 
@@ -165,7 +165,7 @@ var compareAsNumeric = function(a, b) {
 /**
  * Compare as string
  */
-var compareAsString = function(a, b) {
+compareAsString = function(a, b) {
     var valA = new String(a);
     var valB = new String(b);
 
@@ -181,7 +181,7 @@ var compareAsString = function(a, b) {
 /**
  * Compare as date
  */
-var compareAsDate = function(a, b) {
+compareAsDate = function(a, b) {
     var valA = a;
     var valB = b;
 
@@ -208,7 +208,7 @@ var compareAsDate = function(a, b) {
 /**
  * centered RGBa color mapper.  Defaults to significant Z-score range.
  */
-var centeredRgbaColorMapper = function(log, centerVal, minNegVal, maxPosVal) {
+centeredRgbaColorMapper = function(log, centerVal, minNegVal, maxPosVal) {
     var mapper = null;
 
     var centerV = (centerVal == null) ? 0 : centerVal;
@@ -266,7 +266,7 @@ var centeredRgbaColorMapper = function(log, centerVal, minNegVal, maxPosVal) {
 /**
  * requires D3js
  */
-var setupQuantileColorMapper = function(allDataValues, palette) {
+setupQuantileColorMapper = function(allDataValues, palette) {
     // color scale
     var colors = palette;
     if (colors == null) {
@@ -286,7 +286,7 @@ var setupQuantileColorMapper = function(allDataValues, palette) {
 /**
  * Get an XML DOM from an XML file.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
  */
-var getXmlDom_url = function(url) {
+getXmlDom_url = function(url) {
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
     } else {// code for IE6, IE5
@@ -301,7 +301,7 @@ var getXmlDom_url = function(url) {
 /**
  * Get an XML DOM from a text string.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
  */
-var getXmlDom_string = function(txt) {
+getXmlDom_string = function(txt) {
     if (window.DOMParser) {
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(txt, "text/xml");
@@ -318,7 +318,7 @@ var getXmlDom_string = function(txt) {
 /**
  * MySQL style date
  */
-var getDateTime = function() {
+getDateTime = function() {
     var now = new Date();
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
@@ -348,7 +348,7 @@ var getDateTime = function() {
 /**
  * Date in written style.
  */
-var todaysDate = function() {
+todaysDate = function() {
     var months = new Array();
     months[1] = "January";
     months[2] = "February";
@@ -378,7 +378,7 @@ var todaysDate = function() {
 /**
  * Create an unattached div element
  */
-var createDivElement = function(divId, divClass) {
+createDivElement = function(divId, divClass) {
     var divTag = document.createElement("div");
     if (divId != null) {
         divTag.id = divId;
@@ -392,14 +392,14 @@ var createDivElement = function(divId, divClass) {
 /**
  * Assumes the parents are divs.  Requires jQuery.
  */
-var swapContainingDivs = function(nodeA, nodeB) {
+swapContainingDivs = function(nodeA, nodeB) {
     var parentA = nodeA.parentNode;
     var parentB = nodeB.parentNode;
     $("#" + nodeA.id).appendTo(parentB);
     $("#" + nodeB.id).appendTo(parentA);
 };
 
-var lengthOfLongestString = function(arrayOfStrings) {
+lengthOfLongestString = function(arrayOfStrings) {
     var lengths = new Array();
     for (var i in arrayOfStrings) {
         lengths.push(arrayOfStrings[i].length);
@@ -413,7 +413,7 @@ var lengthOfLongestString = function(arrayOfStrings) {
 /**
  * Simple asynchronous GET.  callbackFunc takes the responseText as parameter.
  */
-var simpleAsyncGet = function(url, callbackFunc) {
+simpleAsyncGet = function(url, callbackFunc) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         var DONE = this.DONE || 4;
@@ -432,7 +432,7 @@ var simpleAsyncGet = function(url, callbackFunc) {
 /*
  * Synchronous GET
  */
-var getResponse = function(url) {
+getResponse = function(url) {
     var status = null;
     var xhr = null;
     xhr = new XMLHttpRequest();
@@ -455,7 +455,7 @@ var getResponse = function(url) {
  * querySettings is an object to be stringified into the query string.
  * @param {Object} querySettings
  */
-var loadNewSettings = function(querySettings) {
+loadNewSettings = function(querySettings) {
     var url = window.location.pathname + "?query=" + JSON.stringify(querySettings);
     window.open(url, "_self");
 };
@@ -463,7 +463,7 @@ var loadNewSettings = function(querySettings) {
 /**
  * Get an object with UrlQueryString data.
  */
-var getQueryObj = function() {
+getQueryObj = function() {
     var result = {};
     var keyValuePairs = location.search.slice(1).split('&');
 
@@ -480,7 +480,7 @@ var getQueryObj = function() {
  * From <a href='http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values'>here</a>.
  * @param {Object} name
  */
-var getQueryStringParameterByName = function(name) {
+getQueryStringParameterByName = function(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
     var results = regex.exec(location.search);
@@ -492,7 +492,7 @@ var getQueryStringParameterByName = function(name) {
 /**
  * Turn serializedJson string into a JSON object.
  */
-var parseJson = function(serializedJson) {
+parseJson = function(serializedJson) {
     var deserializedJson = JSON && JSON.parse(serializedJson) || $.parseJSON(serializedJson);
     return deserializedJson;
 };
@@ -500,7 +500,7 @@ var parseJson = function(serializedJson) {
 /**
  * Get a pretty JSON.
  */
-var prettyJson = function(object) {
+prettyJson = function(object) {
     return JSON.stringify(object, null, '\t');
 };
 
@@ -515,7 +515,7 @@ var prettyJson = function(object) {
  * @param {Object} height
  * @param {Object} radius
  */
-var bottomRoundedRectSvgPath = function(x, y, width, height, radius) {
+bottomRoundedRectSvgPath = function(x, y, width, height, radius) {
     var pathString = '';
     pathString += "M" + x + "," + y;
     pathString += "h" + (width);
@@ -537,7 +537,7 @@ var bottomRoundedRectSvgPath = function(x, y, width, height, radius) {
  * @param {Object} height
  * @param {Object} radius
  */
-var allRoundedRectSvgPath = function(x, y, width, height, radius) {
+allRoundedRectSvgPath = function(x, y, width, height, radius) {
     var pathString = '';
     pathString += "M" + (x) + "," + (y + radius);
     pathString += "a" + (radius) + "," + (radius) + " 0 0 1 " + (radius) + "," + (-1 * radius);
@@ -560,7 +560,7 @@ var allRoundedRectSvgPath = function(x, y, width, height, radius) {
  * @param {Object} width
  * @param {Object} height
  */
-var allAngledRectSvgPath = function(x, y, width, height) {
+allAngledRectSvgPath = function(x, y, width, height) {
     // calculated from longer side
     var pad = (width > height) ? width / 8 : height / 8;
     var pathString = '';
@@ -578,7 +578,7 @@ var allAngledRectSvgPath = function(x, y, width, height) {
 
 // TODO SVG elements
 
-var createSvgRingElement = function(cx, cy, r, attributes) {
+createSvgRingElement = function(cx, cy, r, attributes) {
     // https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle
     // (rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
 
@@ -611,7 +611,7 @@ var createSvgRingElement = function(cx, cy, r, attributes) {
     return e;
 };
 
-var createSvgCircleElement = function(cx, cy, r, attributes) {
+createSvgCircleElement = function(cx, cy, r, attributes) {
     var e = document.createElementNS(svgNamespaceUri, "circle");
     e.setAttributeNS(null, "cx", cx);
     e.setAttributeNS(null, "cy", cy);
@@ -624,7 +624,7 @@ var createSvgCircleElement = function(cx, cy, r, attributes) {
     return e;
 };
 
-var createSvgRectElement = function(x, y, rx, ry, width, height, attributes) {
+createSvgRectElement = function(x, y, rx, ry, width, height, attributes) {
     var e = document.createElementNS(svgNamespaceUri, "rect");
     e.setAttributeNS(null, "x", x);
     e.setAttributeNS(null, "y", y);
@@ -640,7 +640,7 @@ var createSvgRectElement = function(x, y, rx, ry, width, height, attributes) {
     return e;
 };
 
-var createSvgImageElement = function(imageUrl, x, y, width, height, attributes) {
+createSvgImageElement = function(imageUrl, x, y, width, height, attributes) {
     var e = document.createElementNS(svgNamespaceUri, "image");
     e.setAttributeNS(xlinkUri, "href", imageUrl);
     e.setAttributeNS(null, "x", x);
@@ -669,7 +669,7 @@ var createSvgImageElement = function(imageUrl, x, y, width, height, attributes) 
  * @param {Object} value
  * @param {Object} days
  */
-var setCookie = function(name, value, days) {
+setCookie = function(name, value, days) {
     if (days) {
         var date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -679,7 +679,7 @@ var setCookie = function(name, value, days) {
     document.cookie = name + "=" + value + expires + "; path=/";
 };
 
-var getCookie = function(name) {
+getCookie = function(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -692,6 +692,6 @@ var getCookie = function(name) {
     return null;
 };
 
-var deleteCookie = function(name) {
+deleteCookie = function(name) {
     setCookie(name, "", -1);
 };
