@@ -12,41 +12,41 @@ var xlinkUri = "http://www.w3.org/1999/xlink";
 /**
  * Check if an object has the specified property.
  */
-function hasOwnProperty(obj, prop) {
+var hasOwnProperty = function(obj, prop) {
     var proto = obj.__proto__ || obj.constructor.prototype;
     return ( prop in obj) && (!( prop in proto) || proto[prop] !== obj[prop]);
-}
+};
 
 /**
  * Check if an array contains specified object.
  */
-function isObjInArray(array, obj) {
+var isObjInArray = function(array, obj) {
     var result = false;
     var index = array.indexOf(obj);
     if (index >= 0) {
         result = true;
     }
     return result;
-}
+};
 
 /**
  * Get an object's attribute keys in an array.
  * @param {Object} obj
  */
-function getKeys(obj) {
+var getKeys = function(obj) {
     var keys = [];
     for (var key in obj) {
         keys.push(key);
     }
     return keys;
-}
+};
 
 /**
  * The ordering of elements is not guaranteed.
  * From https://dreaminginjavascript.wordpress.com/2008/08/22/eliminating-duplicates/
  * @param {Object} arr
  */
-function eliminateDuplicates(arr) {
+var eliminateDuplicates = function(arr) {
     var i, len = arr.length, out = [], obj = {};
 
     for ( i = 0; i < len; i++) {
@@ -56,12 +56,12 @@ function eliminateDuplicates(arr) {
         out.push(i);
     }
     return out;
-}
+};
 
 /**
  * Keep items that appear multiple times.  Original order of items is lost.
  */
-function keepReplicates(arr, threshold, keepUniques) {
+var keepReplicates = function(arr, threshold, keepUniques) {
     var counts = {};
     // tally counts
     for (var i = 0; i < arr.length; i++) {
@@ -87,17 +87,17 @@ function keepReplicates(arr, threshold, keepUniques) {
         }
     }
     return outList;
-}
+};
 
-function beginsWith(str, prefix) {
+var beginsWith = function(str, prefix) {
     return str.indexOf(prefix) === 0;
-}
+};
 
-function endsWith(str, suffix) {
+var endsWith = function(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
+};
 
-function isNumerical(val) {
+var isNumerical = function(val) {
     var result = true;
     if (val == null || val === "") {
         return false;
@@ -109,12 +109,12 @@ function isNumerical(val) {
         return false;
     }
     return result;
-}
+};
 
 /**
  * get the selected values of a list box control.
  */
-function getListBoxSelectedValues(listboxElement) {
+var getListBoxSelectedValues = function(listboxElement) {
     var selectedValues = new Array();
     for (var i = 0; i < listboxElement.length; i++) {
         var option = listboxElement[i];
@@ -123,7 +123,7 @@ function getListBoxSelectedValues(listboxElement) {
         }
     }
     return selectedValues;
-}
+};
 
 // TODO comparator functions
 
@@ -208,7 +208,7 @@ var compareAsDate = function(a, b) {
 /**
  * centered RGBa color mapper.  Defaults to significant Z-score range.
  */
-function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
+var centeredRgbaColorMapper = function(log, centerVal, minNegVal, maxPosVal) {
     var mapper = null;
 
     var centerV = (centerVal == null) ? 0 : centerVal;
@@ -266,7 +266,7 @@ function centeredRgbaColorMapper(log, centerVal, minNegVal, maxPosVal) {
 /**
  * requires D3js
  */
-function setupQuantileColorMapper(allDataValues, palette) {
+var setupQuantileColorMapper = function(allDataValues, palette) {
     // color scale
     var colors = palette;
     if (colors == null) {
@@ -286,7 +286,7 @@ function setupQuantileColorMapper(allDataValues, palette) {
 /**
  * Get an XML DOM from an XML file.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
  */
-function getXmlDom_url(url) {
+var getXmlDom_url = function(url) {
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
     } else {// code for IE6, IE5
@@ -296,12 +296,12 @@ function getXmlDom_url(url) {
     xmlhttp.send();
     xmlDoc = xmlhttp.responseXML;
     return xmlDoc;
-}
+};
 
 /**
  * Get an XML DOM from a text string.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
  */
-function getXmlDom_string(txt) {
+var getXmlDom_string = function(txt) {
     if (window.DOMParser) {
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(txt, "text/xml");
@@ -311,14 +311,14 @@ function getXmlDom_string(txt) {
         xmlDoc.loadXML(txt);
     }
     return xmlDoc;
-}
+};
 
 // TODO date & time
 
 /**
  * MySQL style date
  */
-function getDateTime() {
+var getDateTime = function() {
     var now = new Date();
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
@@ -343,12 +343,12 @@ function getDateTime() {
     }
     var dateTime = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
     return dateTime;
-}
+};
 
 /**
  * Date in written style.
  */
-function todaysDate() {
+var todaysDate = function() {
     var months = new Array();
     months[1] = "January";
     months[2] = "February";
@@ -371,14 +371,14 @@ function todaysDate() {
     var year2 = year - (2000 * 1);
     year2 = (year2 < 10) ? "0" + year2 : year2;
     return (months[month] + " " + date + ", " + year);
-}
+};
 
 // TODO DOM
 
 /**
  * Create an unattached div element
  */
-function createDivElement(divId, divClass) {
+var createDivElement = function(divId, divClass) {
     var divTag = document.createElement("div");
     if (divId != null) {
         divTag.id = divId;
@@ -387,33 +387,33 @@ function createDivElement(divId, divClass) {
         divTag.className = divClass;
     }
     return divTag;
-}
+};
 
 /**
  * Assumes the parents are divs.  Requires jQuery.
  */
-function swapContainingDivs(nodeA, nodeB) {
+var swapContainingDivs = function(nodeA, nodeB) {
     var parentA = nodeA.parentNode;
     var parentB = nodeB.parentNode;
     $("#" + nodeA.id).appendTo(parentB);
     $("#" + nodeB.id).appendTo(parentA);
-}
+};
 
-function lengthOfLongestString(arrayOfStrings) {
+var lengthOfLongestString = function(arrayOfStrings) {
     var lengths = new Array();
     for (var i in arrayOfStrings) {
         lengths.push(arrayOfStrings[i].length);
     }
     var maxLength = Math.max.apply(null, lengths);
     return maxLength;
-}
+};
 
 // TODO URL and query strings
 
 /**
  * Simple asynchronous GET.  callbackFunc takes the responseText as parameter.
  */
-function simpleAsyncGet(url, callbackFunc) {
+var simpleAsyncGet = function(url, callbackFunc) {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         var DONE = this.DONE || 4;
@@ -427,12 +427,12 @@ function simpleAsyncGet(url, callbackFunc) {
     // Most libraries like jQuery/Prototype/Dojo do this
     request.send(null);
     // No data needs to be sent along with the request.
-}
+};
 
 /*
  * Synchronous GET
  */
-function getResponse(url) {
+var getResponse = function(url) {
     var status = null;
     var xhr = null;
     xhr = new XMLHttpRequest();
@@ -449,21 +449,21 @@ function getResponse(url) {
         response = xhr.responseText;
     }
     return response;
-}
+};
 
 /**
  * querySettings is an object to be stringified into the query string.
  * @param {Object} querySettings
  */
-function loadNewSettings(querySettings) {
+var loadNewSettings = function(querySettings) {
     var url = window.location.pathname + "?query=" + JSON.stringify(querySettings);
     window.open(url, "_self");
-}
+};
 
 /**
  * Get an object with UrlQueryString data.
  */
-function getQueryObj() {
+var getQueryObj = function() {
     var result = {};
     var keyValuePairs = location.search.slice(1).split('&');
 
@@ -473,36 +473,36 @@ function getQueryObj() {
     });
 
     return result;
-}
+};
 
 /**
  * Get the value of a parameter from the query string.  If parameter has not value or does not exist, return <code>null</code>.
  * From <a href='http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values'>here</a>.
  * @param {Object} name
  */
-function getQueryStringParameterByName(name) {
+var getQueryStringParameterByName = function(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
     var results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+};
 
 // TODO JSON
 
 /**
  * Turn serializedJson string into a JSON object.
  */
-function parseJson(serializedJson) {
+var parseJson = function(serializedJson) {
     var deserializedJson = JSON && JSON.parse(serializedJson) || $.parseJSON(serializedJson);
     return deserializedJson;
-}
+};
 
 /**
  * Get a pretty JSON.
  */
-function prettyJson(object) {
+var prettyJson = function(object) {
     return JSON.stringify(object, null, '\t');
-}
+};
 
 // TODO SVG paths
 
@@ -515,7 +515,7 @@ function prettyJson(object) {
  * @param {Object} height
  * @param {Object} radius
  */
-function bottomRoundedRectSvgPath(x, y, width, height, radius) {
+var bottomRoundedRectSvgPath = function(x, y, width, height, radius) {
     var pathString = '';
     pathString += "M" + x + "," + y;
     pathString += "h" + (width);
@@ -526,7 +526,7 @@ function bottomRoundedRectSvgPath(x, y, width, height, radius) {
     pathString += "v" + (-1 * (height - radius));
     pathString += 'z';
     return pathString;
-}
+};
 
 /**
  * Returns SVG path data for a rectangle with all rounded corners.
@@ -537,7 +537,7 @@ function bottomRoundedRectSvgPath(x, y, width, height, radius) {
  * @param {Object} height
  * @param {Object} radius
  */
-function allRoundedRectSvgPath(x, y, width, height, radius) {
+var allRoundedRectSvgPath = function(x, y, width, height, radius) {
     var pathString = '';
     pathString += "M" + (x) + "," + (y + radius);
     pathString += "a" + (radius) + "," + (radius) + " 0 0 1 " + (radius) + "," + (-1 * radius);
@@ -550,7 +550,7 @@ function allRoundedRectSvgPath(x, y, width, height, radius) {
     pathString += "v" + (-1 * (height - 2 * radius));
     pathString += 'z';
     return pathString;
-}
+};
 
 /**
  * Returns SVG path data for a rectangle with angled corners.
@@ -560,7 +560,7 @@ function allRoundedRectSvgPath(x, y, width, height, radius) {
  * @param {Object} width
  * @param {Object} height
  */
-function allAngledRectSvgPath(x, y, width, height) {
+var allAngledRectSvgPath = function(x, y, width, height) {
     // calculated from longer side
     var pad = (width > height) ? width / 8 : height / 8;
     var pathString = '';
@@ -574,11 +574,11 @@ function allAngledRectSvgPath(x, y, width, height) {
     pathString += "v" + (-1 * (height - 2 * pad));
     pathString += 'z';
     return pathString;
-}
+};
 
 // TODO SVG elements
 
-function createSvgRingElement(cx, cy, r, attributes) {
+var createSvgRingElement = function(cx, cy, r, attributes) {
     // https://stackoverflow.com/questions/5736398/how-to-calculate-the-svg-path-for-an-arc-of-a-circle
     // (rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
 
@@ -609,9 +609,9 @@ function createSvgRingElement(cx, cy, r, attributes) {
         }
     }
     return e;
-}
+};
 
-function createSvgCircleElement(cx, cy, r, attributes) {
+var createSvgCircleElement = function(cx, cy, r, attributes) {
     var e = document.createElementNS(svgNamespaceUri, "circle");
     e.setAttributeNS(null, "cx", cx);
     e.setAttributeNS(null, "cy", cy);
@@ -622,9 +622,9 @@ function createSvgCircleElement(cx, cy, r, attributes) {
         }
     }
     return e;
-}
+};
 
-function createSvgRectElement(x, y, rx, ry, width, height, attributes) {
+var createSvgRectElement = function(x, y, rx, ry, width, height, attributes) {
     var e = document.createElementNS(svgNamespaceUri, "rect");
     e.setAttributeNS(null, "x", x);
     e.setAttributeNS(null, "y", y);
@@ -638,9 +638,9 @@ function createSvgRectElement(x, y, rx, ry, width, height, attributes) {
         }
     }
     return e;
-}
+};
 
-function createSvgImageElement(imageUrl, x, y, width, height, attributes) {
+var createSvgImageElement = function(imageUrl, x, y, width, height, attributes) {
     var e = document.createElementNS(svgNamespaceUri, "image");
     e.setAttributeNS(xlinkUri, "href", imageUrl);
     e.setAttributeNS(null, "x", x);
@@ -653,7 +653,7 @@ function createSvgImageElement(imageUrl, x, y, width, height, attributes) {
         }
     }
     return e;
-}
+};
 
 // TODO cookies
 
@@ -669,7 +669,7 @@ function createSvgImageElement(imageUrl, x, y, width, height, attributes) {
  * @param {Object} value
  * @param {Object} days
  */
-function setCookie(name, value, days) {
+var setCookie = function(name, value, days) {
     if (days) {
         var date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -677,9 +677,9 @@ function setCookie(name, value, days) {
     } else
         var expires = "";
     document.cookie = name + "=" + value + expires + "; path=/";
-}
+};
 
-function getCookie(name) {
+var getCookie = function(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -690,8 +690,8 @@ function getCookie(name) {
             return c.substring(nameEQ.length, c.length);
     }
     return null;
-}
+};
 
-function deleteCookie(name) {
+var deleteCookie = function(name) {
     setCookie(name, "", -1);
-}
+};
