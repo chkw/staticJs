@@ -390,13 +390,14 @@ createDivElement = function(divId, divClass) {
 };
 
 /**
- * Assumes the parents are divs.  Requires jQuery.
+ * Assumes the parents are divs.
  */
 swapContainingDivs = function(nodeA, nodeB) {
     var parentA = nodeA.parentNode;
     var parentB = nodeB.parentNode;
-    $("#" + nodeA.id).appendTo(parentB);
-    $("#" + nodeB.id).appendTo(parentA);
+
+    document.getElementById("#" + parentA.id).appendChild(nodeB);
+    document.getElementById("#" + parentB.id).appendChild(nodeA);
 };
 
 lengthOfLongestString = function(arrayOfStrings) {
