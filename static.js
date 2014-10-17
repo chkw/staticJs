@@ -494,15 +494,26 @@ getQueryStringParameterByName = function(name) {
  * Turn serializedJson string into a JSON object.
  */
 parseJson = function(serializedJson) {
-    var deserializedJson = JSON && JSON.parse(serializedJson) || $.parseJSON(serializedJson);
+    var deserializedJson = JSON.parse(serializedJson);
     return deserializedJson;
+};
+
+/**
+ *  serialize an object with option for pretty format
+ */
+serializeJson = function(object, pretty) {
+    if (pretty) {
+        return JSON.stringify(object, null, '\t');
+    } else {
+        return JSON.stringify(object);
+    }
 };
 
 /**
  * Get a pretty JSON.
  */
 prettyJson = function(object) {
-    return JSON.stringify(object, null, '\t');
+    return serializeJson(object, true);
 };
 
 // TODO SVG paths
