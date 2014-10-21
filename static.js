@@ -97,6 +97,15 @@ endsWith = function(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 };
 
+lengthOfLongestString = function(arrayOfStrings) {
+    var lengths = new Array();
+    for (var i in arrayOfStrings) {
+        lengths.push(arrayOfStrings[i].length);
+    }
+    var maxLength = Math.max.apply(null, lengths);
+    return maxLength;
+};
+
 isNumerical = function(val) {
     var result = true;
     if (val == null || val === "") {
@@ -376,6 +385,16 @@ todaysDate = function() {
 // TODO DOM
 
 /**
+ * Remove all child elements from parentElem.
+ */
+removeChildElems = function(parentElem) {
+    while (parentElem.firstChild) {
+        parentElem.removeChild(parentElem.firstChild);
+    }
+    return parentElem;
+};
+
+/**
  * Create an unattached div element
  */
 createDivElement = function(divId, divClass) {
@@ -398,15 +417,6 @@ swapContainingDivs = function(nodeA, nodeB) {
 
     document.getElementById("#" + parentA.id).appendChild(nodeB);
     document.getElementById("#" + parentB.id).appendChild(nodeA);
-};
-
-lengthOfLongestString = function(arrayOfStrings) {
-    var lengths = new Array();
-    for (var i in arrayOfStrings) {
-        lengths.push(arrayOfStrings[i].length);
-    }
-    var maxLength = Math.max.apply(null, lengths);
-    return maxLength;
 };
 
 // TODO URL and query strings
