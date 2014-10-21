@@ -415,8 +415,8 @@ swapContainingDivs = function(nodeA, nodeB) {
     var parentA = nodeA.parentNode;
     var parentB = nodeB.parentNode;
 
-    document.getElementById("#" + parentA.id).appendChild(nodeB);
-    document.getElementById("#" + parentB.id).appendChild(nodeA);
+    document.getElementById(parentA.id).appendChild(nodeB);
+    document.getElementById(parentB.id).appendChild(nodeA);
 };
 
 // TODO URL and query strings
