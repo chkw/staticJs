@@ -134,6 +134,16 @@ getListBoxSelectedValues = function(listboxElement) {
     return selectedValues;
 };
 
+/**
+ * linear interpolation
+ * @param {Object} percent
+ * @param {Object} minVal
+ * @param {Object} maxVal
+ */
+linearInterpolation = function(percent, minVal, maxVal) {
+    return ((maxVal - minVal) * percent) + minVal;
+};
+
 // TODO comparator functions
 
 /**
@@ -213,6 +223,24 @@ compareAsDate = function(a, b) {
 };
 
 // TODO color mappers
+
+/**
+ * convert an rgb component to hex value
+ * @param {Object} c
+ */
+rgbComponentToHex = function(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+};
+/**
+ * convert rgb color code to hex
+ * @param {Object} r
+ * @param {Object} g
+ * @param {Object} b
+ */
+rgbToHex = function(r, g, b) {
+    return "#" + rgbComponentToHex(r) + rgbComponentToHex(g) + rgbComponentToHex(b);
+};
 
 /**
  * centered RGBa color mapper.  Defaults to significant Z-score range.
@@ -406,6 +434,19 @@ createDivElement = function(divId, divClass) {
         divTag.className = divClass;
     }
     return divTag;
+};
+
+/**
+ * set the attributes for the specified element
+ */
+setElemAttributes = function(element, attributes, namespace) {
+    var ns = ( typeof namespace == 'undefined') ? null : namespace;
+    if (attributes != null) {
+        for (var attribute in attributes) {
+            element.setAttributeNS(ns, attribute, attributes[attribute]);
+        }
+    }
+    return element;
 };
 
 /**
