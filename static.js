@@ -413,6 +413,14 @@ todaysDate = function() {
 // TODO DOM
 
 /**
+ * Remove an element by ID.
+ */
+removeElemById = function(id) {
+    var elem = document.getElementById(id);
+    elem.parentNode.removeChild(elem);
+};
+
+/**
  * Remove all child elements from parentElem.
  */
 removeChildElems = function(parentElem) {
