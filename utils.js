@@ -247,7 +247,7 @@ var utils = {};
      * @param {Object} b
      */
     u.rgbToHex = function(r, g, b) {
-        return "#" + rgbComponentToHex(r) + rgbComponentToHex(g) + rgbComponentToHex(b);
+        return "#" + this.rgbComponentToHex(r) + this.rgbComponentToHex(g) + this.rgbComponentToHex(b);
     };
 
     /**
@@ -456,7 +456,7 @@ var utils = {};
      * set the attributes for the specified element
      */
     u.setElemAttributes = function(element, attributes, namespace) {
-        var ns = ( typeof namespace == 'undefined') ? null : namespace;
+        var ns = ( typeof namespace === 'undefined') ? null : namespace;
         if (attributes != null) {
             for (var attribute in attributes) {
                 element.setAttributeNS(ns, attribute, attributes[attribute]);
