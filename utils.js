@@ -2,6 +2,10 @@
  * chrisw@soe.ucsc.edu
  * April 10, 2014
  * Finally decided to keep static utility methods in a separate js file.
+ *
+ * Full functionality requires:
+ * 1) jStat
+ * 2) d3js
  */
 
 /**
@@ -773,6 +777,159 @@ var utils = {};
 
     u.deleteCookie = function(name) {
         this.setCookie(name, "", -1);
+    };
+
+    // TODO mutual information for 2 vectors of numbers
+
+    /**
+     * normalize a vector. assumes positive numerical values with minimum value 0.
+     * @param {Object} vector
+     */
+    u.getNormalizedVector = function(vector) {
+        var normalized = [];
+        var min = jStat.min(vector);
+        var max = jStat.max(vector);
+
+        if ((min < 0) || (max == 0)) {
+            console.log('min:' + min + '\tmax:' + max);
+            if (min < 0) {
+                return null;
+            } else if (max == 0) {
+                return vector;
+            }
+        }
+
+        for (var i = 0; i < vector.length; i++) {
+            var newVal = vector[i] / max;
+            normalized.push(newVal);
+        }
+
+        return normalized;
+    };
+
+    /**
+     * Marginal entropy for finite sample (H(X)).
+     */
+    u.computeMarginalEntropy = function(vector, d3histFunc) {
+        var sum = 0;
+        var counts = [];
+
+        var d3histObj = d3histFunc(vector);
+
+        // counts
+        for (var i = 0; i < d3histObj.length; i++) {
+            var bin = d3histObj[i];
+            var binCount = bin.length;
+            counts.push({
+                'bin' : i,
+                'count' : binCount
+            });
+        }
+
+        // probability
+        for (var i = 0; i < counts.length; i++) {
+            var data = counts[i];
+            data.probability = data.count / vector.length;
+            data.prod = (data.probability == 0 ) ? 0 : (data.probability * Math.log2(data.probability));
+
+            sum = sum + data.prod;
+        }
+
+        sum = -1 * sum;
+        return sum;
+    };
+
+    /**
+     * Joint entropy of 2 events (H(X,Y)).
+     */
+    u.computeJointEntropy = function(vector1, vector2, d3histFunc) {
+        if (vector1.length != vector2.length) {
+            return null;
+        }
+        /**
+         * Get the bin index of a value in the d3histObj.
+         */
+        var getBinIndex = function(d3histObj, val) {
+            var binIndex = null;
+            for (var i = 0; i < d3histObj.length; i++) {
+                var bin = d3histObj[i];
+                if ((val >= bin.x) && (val < (bin.x + bin.dx))) {
+                    binIndex = i;
+                    continue;
+                }
+            }
+            if (binIndex == null) {
+                var bin = d3histObj[d3histObj.length - 1];
+                if (val - bin.x - bin.dx < bin.dx) {
+                    binIndex = d3histObj.length - 1;
+                }
+            }
+            return binIndex;
+        };
+
+        var hist1 = d3histFunc(vector1);
+        var hist2 = d3histFunc(vector2);
+
+        // init frequency table
+        var freqTable = {};
+        for (var i = 0; i < hist1.length; i++) {
+            for (var j = 0; j < hist2.length; j++) {
+                var key = i + '_' + j;
+                freqTable[key] = 0;
+            }
+        }
+
+        // fill in frequency table
+        // iterate over sample index
+        for (var i = 0; i < vector1.length; i++) {
+            var xi = vector1[i];
+            var binXi = getBinIndex(hist1, xi);
+
+            var yi = vector2[i];
+            var binYi = getBinIndex(hist2, yi);
+
+            var key = binXi + '_' + binYi;
+            freqTable[key]++;
+        }
+
+        // compute sum over table
+        var sum = 0;
+        var keys = u.getKeys(freqTable);
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            var probability = freqTable[key] / vector1.length;
+            var product = (probability == 0 ) ? 0 : (probability * Math.log2(probability));
+            sum = sum + product;
+        }
+
+        sum = -1 * sum;
+        return sum;
+    };
+
+    /**
+     * I(X;Y) = H(X) + H(Y) - H(X,Y)
+     * @param {Object} vector1
+     * @param {Object} vector2
+     */
+    u.mutualInformation = function(vector1, vector2, numBins) {
+        var mi = null;
+        var numBins = ( typeof numBins === 'undefined') ? 10 : numBins;
+
+        var norm1 = u.getNormalizedVector(vector1);
+        var norm2 = u.getNormalizedVector(vector2);
+
+        var d3Hist = d3.layout.histogram().range([0, 1]).bins(numBins).frequency(false);
+
+        var Hx = u.computeMarginalEntropy(norm1, d3Hist);
+        var Hy = u.computeMarginalEntropy(norm2, d3Hist);
+        var Hxy = u.computeJointEntropy(norm1, norm2, d3Hist);
+
+        // console.log('Hx', Hx);
+        // console.log('Hy', Hy);
+        // console.log('Hxy', Hxy);
+
+        mi = Hx + Hy - Hxy;
+        return mi;
     };
 
 })(utils);
