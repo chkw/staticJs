@@ -54,20 +54,20 @@ var utils = {};
     };
 
     /**
-     * The ordering of elements is not guaranteed.
-     * From https://dreaminginjavascript.wordpress.com/2008/08/22/eliminating-duplicates/
-     * @param {Object} arr
+     * Only unique and first instance of duplicated elements is returned. Ordering is preserved.
      */
-    u.eliminateDuplicates = function(arr) {
-        var i, len = arr.length, out = [], obj = {};
+    u.eliminateDuplicates = function(array) {
+        var result = [];
 
-        for ( i = 0; i < len; i++) {
-            obj[arr[i]] = 0;
+        for (var i = 0; i < array.length; i++) {
+            var element = array[i];
+            if (u.isObjInArray(result, element)) {
+                continue;
+            } else {
+                result.push(element);
+            }
         }
-        for (i in obj) {
-            out.push(i);
-        }
-        return out;
+        return result;
     };
 
     /**
@@ -934,7 +934,7 @@ var utils = {};
      */
     u.mutualInformation = function(vector1, vector2, numBins) {
         var mi = null;
-        var numBins = ( typeof numBins === 'undefined') ? 10 : numBins;
+        var numBins = ( typeof numBins === 'undefined') ? vector1.length : numBins;
 
         var norm1 = u.getNormalizedVector(vector1);
         var norm2 = u.getNormalizedVector(vector2);
