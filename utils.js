@@ -162,7 +162,7 @@ var utils = {};
      * (from https://stackoverflow.com/questions/979256/sorting-an-array-of-javascript-objects)
      */
     u.sort_by = function(field, reverse, primer) {
-
+        // function to get value to compare
         var key = primer ? function(elementObj) {
             return primer(elementObj[field]);
         } : function(elementObj) {
@@ -171,6 +171,7 @@ var utils = {};
 
         reverse = [-1, 1][+!!reverse];
 
+        // return comparator function
         return function(a, b) {
             return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
         };
