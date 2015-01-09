@@ -156,6 +156,26 @@ var utils = {};
         return ((maxVal - minVal) * percent) + minVal;
     };
 
+    // TODO flexible sort
+    /**
+     *Sort array of objects by some specified field. Primer specifies a pre-processing to perform on compared value.
+     * (from https://stackoverflow.com/questions/979256/sorting-an-array-of-javascript-objects)
+     */
+    u.sort_by = function(field, reverse, primer) {
+
+        var key = primer ? function(elementObj) {
+            return primer(elementObj[field]);
+        } : function(elementObj) {
+            return elementObj[field];
+        };
+
+        reverse = [-1, 1][+!!reverse];
+
+        return function(a, b) {
+            return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+        };
+    };
+
     // TODO comparator functions
 
     /**
