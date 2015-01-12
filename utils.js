@@ -936,14 +936,11 @@ var utils = {};
         var mi = null;
         var numBins = ( typeof numBins === 'undefined') ? vector1.length : numBins;
 
-        var norm1 = u.getNormalizedVector(vector1);
-        var norm2 = u.getNormalizedVector(vector2);
+        var d3Hist = d3.layout.histogram().bins(numBins).frequency(false);
 
-        var d3Hist = d3.layout.histogram().range([0, 1]).bins(numBins).frequency(false);
-
-        var Hx = u.computeMarginalEntropy(norm1, d3Hist);
-        var Hy = u.computeMarginalEntropy(norm2, d3Hist);
-        var Hxy = u.computeJointEntropy(norm1, norm2, d3Hist);
+        var Hx = u.computeMarginalEntropy(vector1, d3Hist);
+        var Hy = u.computeMarginalEntropy(vector2, d3Hist);
+        var Hxy = u.computeJointEntropy(vector1, vector2, d3Hist);
 
         // console.log('Hx', Hx);
         // console.log('Hy', Hy);
