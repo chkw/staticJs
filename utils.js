@@ -928,9 +928,10 @@ var utils = {};
     };
 
     /**
-     * I(X;Y) = H(X) + H(Y) - H(X,Y)
-     * @param {Object} vector1
+     * Compute mutual information from empirical entropy.  I(X;Y) = H(X) + H(Y) - H(X,Y)
+     * @param {Object} vector1  Vector of numerical values.
      * @param {Object} vector2
+     * @param {Object} numBins  Optional parameter to specify number of bins for binning step. Defaults to vector length.
      */
     u.mutualInformation = function(vector1, vector2, numBins) {
         var mi = null;
