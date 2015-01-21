@@ -42,6 +42,20 @@ var utils = {};
     };
 
     /**
+     * remove from array by value (instead of index)
+     */
+    u.removeA = function(arr) {
+        var what, a = arguments, L = a.length, ax;
+        while (L > 1 && arr.length) {
+            what = a[--L];
+            while (( ax = arr.indexOf(what)) !== -1) {
+                arr.splice(ax, 1);
+            }
+        }
+        return arr;
+    };
+
+    /**
      * Get an object's attribute keys in an array.
      * @param {Object} obj
      */
