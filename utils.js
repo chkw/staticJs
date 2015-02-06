@@ -16,6 +16,8 @@ var utils = {};
 (function(u) {
     // console.log('self-executing anonymous function');
 
+    u.htmlNamespaceUri = 'http://www.w3.org/1999/xhtml';
+
     u.svgNamespaceUri = 'http://www.w3.org/2000/svg';
 
     // use with "xlink:href" for images in svg as in <http://www.w3.org/Graphics/SVG/WG/wiki/Href>
