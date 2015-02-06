@@ -170,6 +170,40 @@ var utils = {};
         return ((maxVal - minVal) * percent) + minVal;
     };
 
+    // TODO object conversion
+
+    /**
+     * Get an obj without its jQuery wrapping.
+     */
+    u.extractFromJq = function(jqObj) {
+        var jsObj = jqObj.get(0);
+        return jsObj;
+    };
+
+    /**
+     * Wrap an object with jQuery.
+     */
+    u.convertToJq = function(jsObj) {
+        var jqObj = $(jsObj);
+        return jsObj;
+    };
+
+    /**
+     * Get the DOM element from a d3.select()'ed object.
+     */
+    u.extractFromD3 = function(d3Selection) {
+        var domElement = d3Selection.node();
+        return domElement;
+    };
+
+    /**
+     * Convert a DOM element to a d3.selected()'ed object.
+     */
+    u.convertToD3 = function(domElement) {
+        var d3Selection = d3.select(domElement);
+        return d3Selection;
+    };
+
     // TODO flexible sort
     /**
      *Sort array of objects by some specified field. Primer specifies a pre-processing to perform on compared value.
