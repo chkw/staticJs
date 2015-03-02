@@ -582,7 +582,7 @@ var utils = {};
                 } else if (this.status == 400) {
                     console.log('There was an error 400');
                 } else {
-                    console.log('something else other than 200 was returned');
+                    console.log('status was not 200', this.status);
                 }
             }
         };
