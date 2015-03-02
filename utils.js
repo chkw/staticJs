@@ -534,6 +534,13 @@ var utils = {};
         var ns = ( typeof namespace === 'undefined') ? null : namespace;
         if (attributes != null) {
             for (var attribute in attributes) {
+
+                // console.log({
+                // 'ns' : ns,
+                // 'attribute' : attribute,
+                // 'value' : attributes[attribute]
+                // });
+
                 element.setAttributeNS(ns, attribute, attributes[attribute]);
             }
         }
@@ -558,10 +565,28 @@ var utils = {};
      */
     u.simpleAsyncGet = function(url, callbackFunc) {
         var request = new XMLHttpRequest();
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            request = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
         request.onreadystatechange = function() {
             var DONE = this.DONE || 4;
             if (this.readyState === DONE) {
-                callbackFunc(request.responseText);
+
+                if (this.status == 200) {
+                    document.getElementById("myDiv").innerHTML = this.responseText;
+                } else if (this.status == 400) {
+                    console.log('There was an error 400');
+                } else {
+                    console.log('something else other than 200 was returned');
+                }
+
+                callbackFunc(this.responseText);
             }
         };
         request.open('GET', url, true);
