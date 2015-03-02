@@ -577,16 +577,13 @@ var utils = {};
         request.onreadystatechange = function() {
             var DONE = this.DONE || 4;
             if (this.readyState === DONE) {
-
                 if (this.status == 200) {
-                    document.getElementById("myDiv").innerHTML = this.responseText;
+                    callbackFunc(this.responseText);
                 } else if (this.status == 400) {
                     console.log('There was an error 400');
                 } else {
                     console.log('something else other than 200 was returned');
                 }
-
-                callbackFunc(this.responseText);
             }
         };
         request.open('GET', url, true);
