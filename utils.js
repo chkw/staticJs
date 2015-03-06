@@ -11,7 +11,7 @@
 /**
  * Functions and vars to be added to this global object.
  */
-var utils = {};
+var utils = utils || {};
 
 (function(u) {
     // console.log('self-executing anonymous function');
