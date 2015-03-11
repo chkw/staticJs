@@ -13,7 +13,7 @@
  */
 var utils = utils || {};
 
-(function(u) {
+(function(u) {"use strict";
     // console.log('self-executing anonymous function');
 
     u.htmlNamespaceUri = 'http://www.w3.org/1999/xhtml';
