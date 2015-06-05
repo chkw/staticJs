@@ -32,6 +32,29 @@ var utils = utils || {};
     };
 
     /**
+     * Fisher-Yates (aka Knuth) Shuffle
+     * http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+     */
+    u.shuffleArray = function(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    };
+
+    /**
      * Check if an array contains specified object.
      */
     u.isObjInArray = function(array, obj) {
@@ -170,6 +193,27 @@ var utils = utils || {};
      */
     u.linearInterpolation = function(percent, minVal, maxVal) {
         return ((maxVal - minVal) * percent) + minVal;
+    };
+
+    /**
+     * Set the numericValue to be in the range [min, max].
+     */
+    u.rangeLimit = function(numericValue, min, max) {
+        var result;
+        if ( typeof min === 'undefined') {
+            min = -1;
+        }
+        if ( typeof max === 'undefined') {
+            max = 1;
+        }
+        if (numericValue < min) {
+            result = min;
+        } else if (numericValue > max) {
+            result = max;
+        } else {
+            result = numericValue;
+        }
+        return result;
     };
 
     // TODO object conversion
@@ -808,6 +852,20 @@ var utils = utils || {};
         e.setAttributeNS(null, "ry", ry);
         e.setAttributeNS(null, "width", width);
         e.setAttributeNS(null, "height", height);
+        if (attributes != null) {
+            for (var attribute in attributes) {
+                e.setAttributeNS(null, attribute, attributes[attribute]);
+            }
+        }
+        return e;
+    };
+
+    /**
+     * Polygon is defined by a list of points as in: http://www.w3.org/TR/SVG/shapes.html#PolygonElement
+     * Thus, attributes must have string with space-separated list of points keyed 'points'.
+     */
+    u.createSVGPolygonElement = function(attributes) {
+        var e = document.createElementNS(this.svgNamespaceUri, "polygon");
         if (attributes != null) {
             for (var attribute in attributes) {
                 e.setAttributeNS(null, attribute, attributes[attribute]);
