@@ -539,6 +539,20 @@ var utils = utils || {};
 
     // TODO DOM
 
+    u.pushElemToBack = function(elem) {
+        var parentNode = elem.parentNode;
+        parentNode.insertBefore(elem, parentNode.firstChild);
+        return elem;
+    };
+
+    /**
+     * Bring elem to front of DOM by placing it last in the parent elem.
+     */
+    u.pullElemToFront = function(elem) {
+        elem.parentNode.appendChild(elem);
+        return elem;
+    };
+
     /**
      * Remove an element by ID.
      */
