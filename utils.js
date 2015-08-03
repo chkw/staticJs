@@ -6,6 +6,7 @@
  * Full functionality requires:
  * 1) jStat
  * 2) d3js
+ * 3) jQuery
  */
 
 /**
@@ -217,6 +218,22 @@ var utils = utils || {};
     };
 
     // TODO object conversion
+
+    /**
+     * Clone an object.
+     * Requires jQuery
+     * https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-clone-an-object
+     */
+    u.cloneObject = function(objToBeCloned, deepCopy) {
+        // var newObject = eval(objToBeCloned.toSource());
+        var newObject;
+        if (deepCopy) {
+            newObject = jQuery.extend(true, {}, objToBeCloned);
+        } else {
+            newObject = jQuery.extend({}, objToBeCloned);
+        }
+        return newObject;
+    };
 
     /**
      * Get an obj without its jQuery wrapping.
