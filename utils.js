@@ -94,6 +94,19 @@ var utils = utils || {};
     };
 
     /**
+     * Get the object's attribute values in an array
+     */
+    u.getValues = function(obj) {
+        var vals = [];
+        var keys = u.getKeys(obj);
+        for (var i = 0, length = keys.length; i < length; i++) {
+            var val = obj[keys[i]];
+            vals.push(val);
+        }
+        return vals;
+    };
+
+    /**
      * Only unique and first instance of duplicated elements is returned. Ordering is preserved.
      */
     u.eliminateDuplicates = function(array) {
