@@ -415,6 +415,8 @@ var utils = utils || {};
             var g = 169;
             var b = 169;
 
+            var exponent = 1 / 2;
+
             var v = parseFloat(val);
 
             if ((v == null) || (v != v)) {
@@ -429,7 +431,7 @@ var utils = utils || {};
                     a = (v - centerV) / (maxPosV - centerV);
                     a = Math.abs(a);
                     if (log) {
-                        a = Math.log(a);
+                        a = Math.pow(a, exponent);
                     }
                 }
             } else if (v < centerV) {
@@ -442,7 +444,7 @@ var utils = utils || {};
                     a = (v - centerV) / (minNegV - centerV);
                     a = Math.abs(a);
                     if (log) {
-                        a = Math.log(a);
+                        a = Math.pow(a, exponent);
                     }
                 }
             } else {
