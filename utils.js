@@ -25,6 +25,20 @@ var utils = utils || {};
     u.xlinkUri = "http://www.w3.org/1999/xlink";
 
     /**
+     * convert radian to degree
+     */
+    u.toDegrees = function(angle) {
+        return angle * (180 / Math.PI);
+    };
+
+    /**
+     * convert degree to radian
+     */
+    u.toRadians = function(angle) {
+        return angle * (Math.PI / 180);
+    };
+
+    /**
      * Check if an object has the specified property.
      */
     u.hasOwnProperty = function(obj, prop) {
