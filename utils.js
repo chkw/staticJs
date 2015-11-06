@@ -369,6 +369,42 @@ var utils = utils || {};
     };
 
     /**
+     * Compare as string
+     */
+    u.compareAsString_medbook = function(a, b) {
+        var valA = new String(a).valueOf().toLowerCase();
+        var valB = new String(b).valueOf().toLowerCase();
+
+        // if exactly one is "null"
+        if ((valA == 'null') && (valB != 'null')) {
+            return 1;
+        } else if ((valA != 'null') && (valB == 'null')) {
+            return -1;
+        }
+
+        // if exactly one is "exclude"
+        if ((valA == 'exclude') && (valB != 'exclude')) {
+            return 1;
+        } else if ((valA != 'exclude') && (valB == 'exclude')) {
+            return -1;
+        }
+
+        // if at least one is "exclude"
+        switch (valA + valB) {
+            case "excludenull":
+                return -1;
+                break;
+            case "nullexclude":
+                return 1;
+                break;
+            default:
+                return valA.localeCompare(valB);
+        }
+
+        // return valA.localeCompare(valB);
+    };
+
+    /*
      * Compare as date
      */
     u.compareAsDate = function(a, b) {
