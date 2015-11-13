@@ -389,6 +389,13 @@ var utils = utils || {};
             return -1;
         }
 
+        // if exactly one is "small cell"
+        if ((valA == 'small cell') && (valB != 'small cell')) {
+            return -1;
+        } else if ((valA != 'small cell') && (valB == 'small cell')) {
+            return 1;
+        }
+
         // if at least one is "exclude"
         switch (valA + valB) {
             case "excludenull":
