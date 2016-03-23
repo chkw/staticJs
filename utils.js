@@ -396,6 +396,13 @@ var utils = utils || {};
             return 1;
         }
 
+        // if exactly one is "no call"
+        if ((valA == 'no call') && (valB != 'no call')) {
+            return 1;
+        } else if ((valA != 'no call') && (valB == 'no call')) {
+            return -1;
+        }
+
         // if at least one is "exclude"
         switch (valA + valB) {
             case "excludenull":
