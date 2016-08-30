@@ -1177,7 +1177,7 @@ var utils = utils || {};
             var c = ca[i];
             while (c.charAt(0) == ' ')
                 c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0)
+            if (c.indexOf(nameEQ) === 0)
                 return c.substring(nameEQ.length, c.length);
         }
         return null;
@@ -1198,11 +1198,11 @@ var utils = utils || {};
         var min = jStat.min(vector);
         var max = jStat.max(vector);
 
-        if ((min < 0) || (max == 0)) {
+        if ((min < 0) || (max === 0)) {
             console.log('min:' + min + '\tmax:' + max);
             if (min < 0) {
                 return null;
-            } else if (max == 0) {
+            } else if (max === 0) {
                 return vector;
             }
         }
@@ -1238,7 +1238,7 @@ var utils = utils || {};
         for (var i = 0; i < counts.length; i++) {
             var data = counts[i];
             data.probability = data.count / vector.length;
-            data.prod = (data.probability == 0) ? 0 : (data.probability * Math.log2(data.probability));
+            data.prod = (data.probability === 0) ? 0 : (data.probability * Math.log2(data.probability));
 
             sum = sum + data.prod;
         }
@@ -1266,7 +1266,7 @@ var utils = utils || {};
                     continue;
                 }
             }
-            if (binIndex == null) {
+            if (binIndex === null) {
                 var bin = d3histObj[d3histObj.length - 1];
                 if (val - bin.x - bin.dx < bin.dx) {
                     binIndex = d3histObj.length - 1;
@@ -1306,7 +1306,7 @@ var utils = utils || {};
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
             var probability = freqTable[key] / vector1.length;
-            var product = (probability == 0) ? 0 : (probability * Math.log2(probability));
+            var product = (probability === 0) ? 0 : (probability * Math.log2(probability));
             sum = sum + product;
         }
 
