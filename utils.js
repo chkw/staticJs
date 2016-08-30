@@ -14,7 +14,8 @@
  */
 var utils = utils || {};
 
-(function(u) {"use strict";
+(function(u) {
+    "use strict";
     // console.log('self-executing anonymous function');
 
     u.htmlNamespaceUri = 'http://www.w3.org/1999/xhtml';
@@ -25,146 +26,146 @@ var utils = utils || {};
     u.xlinkUri = "http://www.w3.org/1999/xlink";
 
     u.colors = {
-        "aliceblue" : "#f0f8ff",
-        "antiquewhite" : "#faebd7",
-        "aqua" : "#00ffff",
-        "aquamarine" : "#7fffd4",
-        "azure" : "#f0ffff",
-        "beige" : "#f5f5dc",
-        "bisque" : "#ffe4c4",
-        "black" : "#000000",
-        "blanchedalmond" : "#ffebcd",
-        "blue" : "#0000ff",
-        "blueviolet" : "#8a2be2",
-        "brown" : "#a52a2a",
-        "burlywood" : "#deb887",
-        "cadetblue" : "#5f9ea0",
-        "chartreuse" : "#7fff00",
-        "chocolate" : "#d2691e",
-        "coral" : "#ff7f50",
-        "cornflowerblue" : "#6495ed",
-        "cornsilk" : "#fff8dc",
-        "crimson" : "#dc143c",
-        "cyan" : "#00ffff",
-        "darkblue" : "#00008b",
-        "darkcyan" : "#008b8b",
-        "darkgoldenrod" : "#b8860b",
-        "darkgray" : "#a9a9a9",
-        "darkgreen" : "#006400",
-        "darkkhaki" : "#bdb76b",
-        "darkmagenta" : "#8b008b",
-        "darkolivegreen" : "#556b2f",
-        "darkorange" : "#ff8c00",
-        "darkorchid" : "#9932cc",
-        "darkred" : "#8b0000",
-        "darksalmon" : "#e9967a",
-        "darkseagreen" : "#8fbc8f",
-        "darkslateblue" : "#483d8b",
-        "darkslategray" : "#2f4f4f",
-        "darkturquoise" : "#00ced1",
-        "darkviolet" : "#9400d3",
-        "deeppink" : "#ff1493",
-        "deepskyblue" : "#00bfff",
-        "dimgray" : "#696969",
-        "dodgerblue" : "#1e90ff",
-        "firebrick" : "#b22222",
-        "floralwhite" : "#fffaf0",
-        "forestgreen" : "#228b22",
-        "fuchsia" : "#ff00ff",
-        "gainsboro" : "#dcdcdc",
-        "ghostwhite" : "#f8f8ff",
-        "gold" : "#ffd700",
-        "goldenrod" : "#daa520",
-        "gray" : "#808080",
-        "green" : "#008000",
-        "greenyellow" : "#adff2f",
-        "honeydew" : "#f0fff0",
-        "hotpink" : "#ff69b4",
-        "indianred " : "#cd5c5c",
-        "indigo" : "#4b0082",
-        "ivory" : "#fffff0",
-        "khaki" : "#f0e68c",
-        "lavender" : "#e6e6fa",
-        "lavenderblush" : "#fff0f5",
-        "lawngreen" : "#7cfc00",
-        "lemonchiffon" : "#fffacd",
-        "lightblue" : "#add8e6",
-        "lightcoral" : "#f08080",
-        "lightcyan" : "#e0ffff",
-        "lightgoldenrodyellow" : "#fafad2",
-        "lightgrey" : "#d3d3d3",
-        "lightgreen" : "#90ee90",
-        "lightpink" : "#ffb6c1",
-        "lightsalmon" : "#ffa07a",
-        "lightseagreen" : "#20b2aa",
-        "lightskyblue" : "#87cefa",
-        "lightslategray" : "#778899",
-        "lightsteelblue" : "#b0c4de",
-        "lightyellow" : "#ffffe0",
-        "lime" : "#00ff00",
-        "limegreen" : "#32cd32",
-        "linen" : "#faf0e6",
-        "magenta" : "#ff00ff",
-        "maroon" : "#800000",
-        "mediumaquamarine" : "#66cdaa",
-        "mediumblue" : "#0000cd",
-        "mediumorchid" : "#ba55d3",
-        "mediumpurple" : "#9370d8",
-        "mediumseagreen" : "#3cb371",
-        "mediumslateblue" : "#7b68ee",
-        "mediumspringgreen" : "#00fa9a",
-        "mediumturquoise" : "#48d1cc",
-        "mediumvioletred" : "#c71585",
-        "midnightblue" : "#191970",
-        "mintcream" : "#f5fffa",
-        "mistyrose" : "#ffe4e1",
-        "moccasin" : "#ffe4b5",
-        "navajowhite" : "#ffdead",
-        "navy" : "#000080",
-        "oldlace" : "#fdf5e6",
-        "olive" : "#808000",
-        "olivedrab" : "#6b8e23",
-        "orange" : "#ffa500",
-        "orangered" : "#ff4500",
-        "orchid" : "#da70d6",
-        "palegoldenrod" : "#eee8aa",
-        "palegreen" : "#98fb98",
-        "paleturquoise" : "#afeeee",
-        "palevioletred" : "#d87093",
-        "papayawhip" : "#ffefd5",
-        "peachpuff" : "#ffdab9",
-        "peru" : "#cd853f",
-        "pink" : "#ffc0cb",
-        "plum" : "#dda0dd",
-        "powderblue" : "#b0e0e6",
-        "purple" : "#800080",
-        "red" : "#ff0000",
-        "rosybrown" : "#bc8f8f",
-        "royalblue" : "#4169e1",
-        "saddlebrown" : "#8b4513",
-        "salmon" : "#fa8072",
-        "sandybrown" : "#f4a460",
-        "seagreen" : "#2e8b57",
-        "seashell" : "#fff5ee",
-        "sienna" : "#a0522d",
-        "silver" : "#c0c0c0",
-        "skyblue" : "#87ceeb",
-        "slateblue" : "#6a5acd",
-        "slategray" : "#708090",
-        "snow" : "#fffafa",
-        "springgreen" : "#00ff7f",
-        "steelblue" : "#4682b4",
-        "tan" : "#d2b48c",
-        "teal" : "#008080",
-        "thistle" : "#d8bfd8",
-        "tomato" : "#ff6347",
-        "turquoise" : "#40e0d0",
-        "violet" : "#ee82ee",
-        "wheat" : "#f5deb3",
-        "white" : "#ffffff",
-        "whitesmoke" : "#f5f5f5",
-        "yellow" : "#ffff00",
-        "yellowgreen" : "#9acd32"
+        "aliceblue": "#f0f8ff",
+        "antiquewhite": "#faebd7",
+        "aqua": "#00ffff",
+        "aquamarine": "#7fffd4",
+        "azure": "#f0ffff",
+        "beige": "#f5f5dc",
+        "bisque": "#ffe4c4",
+        "black": "#000000",
+        "blanchedalmond": "#ffebcd",
+        "blue": "#0000ff",
+        "blueviolet": "#8a2be2",
+        "brown": "#a52a2a",
+        "burlywood": "#deb887",
+        "cadetblue": "#5f9ea0",
+        "chartreuse": "#7fff00",
+        "chocolate": "#d2691e",
+        "coral": "#ff7f50",
+        "cornflowerblue": "#6495ed",
+        "cornsilk": "#fff8dc",
+        "crimson": "#dc143c",
+        "cyan": "#00ffff",
+        "darkblue": "#00008b",
+        "darkcyan": "#008b8b",
+        "darkgoldenrod": "#b8860b",
+        "darkgray": "#a9a9a9",
+        "darkgreen": "#006400",
+        "darkkhaki": "#bdb76b",
+        "darkmagenta": "#8b008b",
+        "darkolivegreen": "#556b2f",
+        "darkorange": "#ff8c00",
+        "darkorchid": "#9932cc",
+        "darkred": "#8b0000",
+        "darksalmon": "#e9967a",
+        "darkseagreen": "#8fbc8f",
+        "darkslateblue": "#483d8b",
+        "darkslategray": "#2f4f4f",
+        "darkturquoise": "#00ced1",
+        "darkviolet": "#9400d3",
+        "deeppink": "#ff1493",
+        "deepskyblue": "#00bfff",
+        "dimgray": "#696969",
+        "dodgerblue": "#1e90ff",
+        "firebrick": "#b22222",
+        "floralwhite": "#fffaf0",
+        "forestgreen": "#228b22",
+        "fuchsia": "#ff00ff",
+        "gainsboro": "#dcdcdc",
+        "ghostwhite": "#f8f8ff",
+        "gold": "#ffd700",
+        "goldenrod": "#daa520",
+        "gray": "#808080",
+        "green": "#008000",
+        "greenyellow": "#adff2f",
+        "honeydew": "#f0fff0",
+        "hotpink": "#ff69b4",
+        "indianred ": "#cd5c5c",
+        "indigo": "#4b0082",
+        "ivory": "#fffff0",
+        "khaki": "#f0e68c",
+        "lavender": "#e6e6fa",
+        "lavenderblush": "#fff0f5",
+        "lawngreen": "#7cfc00",
+        "lemonchiffon": "#fffacd",
+        "lightblue": "#add8e6",
+        "lightcoral": "#f08080",
+        "lightcyan": "#e0ffff",
+        "lightgoldenrodyellow": "#fafad2",
+        "lightgrey": "#d3d3d3",
+        "lightgreen": "#90ee90",
+        "lightpink": "#ffb6c1",
+        "lightsalmon": "#ffa07a",
+        "lightseagreen": "#20b2aa",
+        "lightskyblue": "#87cefa",
+        "lightslategray": "#778899",
+        "lightsteelblue": "#b0c4de",
+        "lightyellow": "#ffffe0",
+        "lime": "#00ff00",
+        "limegreen": "#32cd32",
+        "linen": "#faf0e6",
+        "magenta": "#ff00ff",
+        "maroon": "#800000",
+        "mediumaquamarine": "#66cdaa",
+        "mediumblue": "#0000cd",
+        "mediumorchid": "#ba55d3",
+        "mediumpurple": "#9370d8",
+        "mediumseagreen": "#3cb371",
+        "mediumslateblue": "#7b68ee",
+        "mediumspringgreen": "#00fa9a",
+        "mediumturquoise": "#48d1cc",
+        "mediumvioletred": "#c71585",
+        "midnightblue": "#191970",
+        "mintcream": "#f5fffa",
+        "mistyrose": "#ffe4e1",
+        "moccasin": "#ffe4b5",
+        "navajowhite": "#ffdead",
+        "navy": "#000080",
+        "oldlace": "#fdf5e6",
+        "olive": "#808000",
+        "olivedrab": "#6b8e23",
+        "orange": "#ffa500",
+        "orangered": "#ff4500",
+        "orchid": "#da70d6",
+        "palegoldenrod": "#eee8aa",
+        "palegreen": "#98fb98",
+        "paleturquoise": "#afeeee",
+        "palevioletred": "#d87093",
+        "papayawhip": "#ffefd5",
+        "peachpuff": "#ffdab9",
+        "peru": "#cd853f",
+        "pink": "#ffc0cb",
+        "plum": "#dda0dd",
+        "powderblue": "#b0e0e6",
+        "purple": "#800080",
+        "red": "#ff0000",
+        "rosybrown": "#bc8f8f",
+        "royalblue": "#4169e1",
+        "saddlebrown": "#8b4513",
+        "salmon": "#fa8072",
+        "sandybrown": "#f4a460",
+        "seagreen": "#2e8b57",
+        "seashell": "#fff5ee",
+        "sienna": "#a0522d",
+        "silver": "#c0c0c0",
+        "skyblue": "#87ceeb",
+        "slateblue": "#6a5acd",
+        "slategray": "#708090",
+        "snow": "#fffafa",
+        "springgreen": "#00ff7f",
+        "steelblue": "#4682b4",
+        "tan": "#d2b48c",
+        "teal": "#008080",
+        "thistle": "#d8bfd8",
+        "tomato": "#ff6347",
+        "turquoise": "#40e0d0",
+        "violet": "#ee82ee",
+        "wheat": "#f5deb3",
+        "white": "#ffffff",
+        "whitesmoke": "#f5f5f5",
+        "yellow": "#ffff00",
+        "yellowgreen": "#9acd32"
     };
 
     /**
@@ -186,7 +187,7 @@ var utils = utils || {};
      */
     u.hasOwnProperty = function(obj, prop) {
         var proto = obj.__proto__ || obj.constructor.prototype;
-        return ( prop in obj) && (!( prop in proto) || proto[prop] !== obj[prop]);
+        return (prop in obj) && (!(prop in proto) || proto[prop] !== obj[prop]);
     };
 
     /**
@@ -194,7 +195,8 @@ var utils = utils || {};
      * http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
      */
     u.shuffleArray = function(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+        var currentIndex = array.length,
+            temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
@@ -228,10 +230,12 @@ var utils = utils || {};
      * remove from array by value (instead of index)
      */
     u.removeA = function(arr) {
-        var what, a = arguments, L = a.length, ax;
+        var what, a = arguments,
+            L = a.length,
+            ax;
         while (L > 1 && arr.length) {
             what = a[--L];
-            while (( ax = arr.indexOf(what)) !== -1) {
+            while ((ax = arr.indexOf(what)) !== -1) {
                 arr.splice(ax, 1);
             }
         }
@@ -288,17 +292,16 @@ var utils = utils || {};
         // tally counts
         for (var i = 0; i < arr.length; i++) {
             var value = arr[i];
-            if ( value in counts) {
-            } else {
+            if (value in counts) {} else {
                 counts[value] = 0;
             }
             counts[value]++;
         }
         // apply threshold
-        threshold = (threshold == null) ? 2 : threshold;
+        threshold = (threshold === null) ? 2 : threshold;
         var outList = [];
         for (var value in counts) {
-            if ((keepUniques != null) && (keepUniques)) {
+            if ((keepUniques !== null) && (keepUniques)) {
                 if (counts[value] < threshold) {
                     outList.push(value);
                 }
@@ -320,7 +323,7 @@ var utils = utils || {};
     };
 
     u.lengthOfLongestString = function(arrayOfStrings) {
-        var lengths = new Array();
+        var lengths = [];
         for (var i in arrayOfStrings) {
             lengths.push(arrayOfStrings[i].length);
         }
@@ -330,7 +333,7 @@ var utils = utils || {};
 
     u.isNumerical = function(val) {
         var result = true;
-        if (val == null || val === "") {
+        if (val === null || val === "") {
             return false;
         }
 
@@ -346,7 +349,7 @@ var utils = utils || {};
      * get the selected values of a list box control.
      */
     u.getListBoxSelectedValues = function(listboxElement) {
-        var selectedValues = new Array();
+        var selectedValues = [];
         for (var i = 0; i < listboxElement.length; i++) {
             var option = listboxElement[i];
             if (option.selected) {
@@ -371,10 +374,10 @@ var utils = utils || {};
      */
     u.rangeLimit = function(numericValue, min, max) {
         var result;
-        if ( typeof min === 'undefined') {
+        if (typeof min === 'undefined') {
             min = -1;
         }
-        if ( typeof max === 'undefined') {
+        if (typeof max === 'undefined') {
             max = 1;
         }
         if (numericValue < min) {
@@ -550,10 +553,10 @@ var utils = utils || {};
         switch (valA + valB) {
             case "excludenull":
                 return -1;
-                break;
+                // break;
             case "nullexclude":
                 return 1;
-                break;
+                // break;
             default:
                 return valA.localeCompare(valB);
         }
@@ -568,15 +571,15 @@ var utils = utils || {};
         var valA = a;
         var valB = b;
 
-        if (valA == null) {
+        if (valA === null) {
             valA = '1000';
-        } else if (valA == '') {
+        } else if (valA === '') {
             valA = '1001';
         }
 
-        if (valB == null) {
+        if (valB === null) {
             valB = '1000';
-        } else if (valB == '') {
+        } else if (valB === '') {
             valB = '1001';
         }
 
@@ -612,9 +615,9 @@ var utils = utils || {};
     u.centeredRgbaColorMapper = function(log, centerVal, minNegVal, maxPosVal) {
         var mapper = null;
 
-        var centerV = (centerVal == null) ? 0 : centerVal;
-        var minNegV = (minNegVal == null) ? -1.96 : minNegVal;
-        var maxPosV = (maxPosVal == null) ? 1.96 : maxPosVal;
+        var centerV = (centerVal === null) ? 0 : centerVal;
+        var minNegV = (minNegVal === null) ? -1.96 : minNegVal;
+        var maxPosV = (maxPosVal === null) ? 1.96 : maxPosVal;
 
         mapper = function(val) {
             var a = 1;
@@ -626,7 +629,7 @@ var utils = utils || {};
 
             var v = parseFloat(val);
 
-            if ((v == null) || (v != v)) {
+            if ((v === null) || (v != v)) {
                 // null or NaN values
             } else if (v > centerV) {
                 r = 255;
@@ -672,7 +675,7 @@ var utils = utils || {};
     u.setupQuantileColorMapper = function(allDataValues, palette) {
         // color scale
         var colors = palette;
-        if (colors == null) {
+        if (colors === null) {
             // colors = ["#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#081d58"];
             colors = ["rgb(255,255,217)", "rgb(237,248,177)", "rgb(199,233,180)", "rgb(127,205,187)", "rgb(65,182,196)", "rgb(29,145,192)", "rgb(34,94,168)", "rgb(37,52,148)", "rgb(8,29,88)"];
         }
@@ -690,9 +693,9 @@ var utils = utils || {};
      * Get an XML DOM from an XML file.  Information about DOM at <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">https://developer.mozilla.org/en-US/docs/Web/API/document</a>.
      */
     u.getXmlDom_url = function(url) {
-        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
-        } else {// code for IE6, IE5
+        } else { // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.open("GET", url, false);
@@ -708,7 +711,7 @@ var utils = utils || {};
         if (window.DOMParser) {
             parser = new DOMParser();
             xmlDoc = parser.parseFromString(txt, "text/xml");
-        } else {// Internet Explorer
+        } else { // Internet Explorer
             xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
             xmlDoc.async = false;
             xmlDoc.loadXML(txt);
@@ -730,19 +733,19 @@ var utils = utils || {};
         var minute = now.getMinutes();
         var second = now.getSeconds();
         if (month.toString().length == 1) {
-            var month = '0' + month;
+            month = '0' + month;
         }
         if (day.toString().length == 1) {
-            var day = '0' + day;
+            day = '0' + day;
         }
         if (hour.toString().length == 1) {
-            var hour = '0' + hour;
+            hour = '0' + hour;
         }
         if (minute.toString().length == 1) {
-            var minute = '0' + minute;
+            minute = '0' + minute;
         }
         if (second.toString().length == 1) {
-            var second = '0' + second;
+            second = '0' + second;
         }
         var dateTime = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
         return dateTime;
@@ -752,7 +755,7 @@ var utils = utils || {};
      * Date in written style.
      */
     u.todaysDate = function() {
-        var months = new Array();
+        var months = [];
         months[1] = "January";
         months[2] = "February";
         months[3] = "March";
@@ -815,10 +818,10 @@ var utils = utils || {};
      */
     u.createDivElement = function(divId, divClass) {
         var divTag = document.createElement("div");
-        if (divId != null) {
+        if (divId !== null) {
             divTag.id = divId;
         }
-        if (divClass != null) {
+        if (divClass !== null) {
             divTag.className = divClass;
         }
         return divTag;
@@ -828,8 +831,8 @@ var utils = utils || {};
      * set the attributes for the specified element
      */
     u.setElemAttributes = function(element, attributes, namespace) {
-        var ns = ( typeof namespace === 'undefined') ? null : namespace;
-        if (attributes != null) {
+        var ns = (typeof namespace === 'undefined') ? null : namespace;
+        if (attributes !== null) {
             for (var attribute in attributes) {
 
                 // console.log({
@@ -946,7 +949,7 @@ var utils = utils || {};
         name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
         var results = regex.exec(location.search);
-        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     };
 
     // TODO JSON
@@ -1058,8 +1061,8 @@ var utils = utils || {};
         function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
             var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
             return {
-                x : centerX + (radius * Math.cos(angleInRadians)),
-                y : centerY + (radius * Math.sin(angleInRadians))
+                x: centerX + (radius * Math.cos(angleInRadians)),
+                y: centerY + (radius * Math.sin(angleInRadians))
             };
         }
 
@@ -1076,7 +1079,7 @@ var utils = utils || {};
 
         var e = document.createElementNS(this.svgNamespaceUri, "path");
         e.setAttributeNS(null, "d", arcPath);
-        if (attributes != null) {
+        if (attributes !== null) {
             for (var attribute in attributes) {
                 e.setAttributeNS(null, attribute, attributes[attribute]);
             }
@@ -1089,7 +1092,7 @@ var utils = utils || {};
         e.setAttributeNS(null, "cx", cx);
         e.setAttributeNS(null, "cy", cy);
         e.setAttributeNS(null, 'r', r);
-        if (attributes != null) {
+        if (attributes !== null) {
             for (var attribute in attributes) {
                 e.setAttributeNS(null, attribute, attributes[attribute]);
             }
@@ -1105,7 +1108,7 @@ var utils = utils || {};
         e.setAttributeNS(null, "ry", ry);
         e.setAttributeNS(null, "width", width);
         e.setAttributeNS(null, "height", height);
-        if (attributes != null) {
+        if (attributes !== null) {
             for (var attribute in attributes) {
                 e.setAttributeNS(null, attribute, attributes[attribute]);
             }
@@ -1119,7 +1122,7 @@ var utils = utils || {};
      */
     u.createSVGPolygonElement = function(attributes) {
         var e = document.createElementNS(this.svgNamespaceUri, "polygon");
-        if (attributes != null) {
+        if (attributes !== null) {
             for (var attribute in attributes) {
                 e.setAttributeNS(null, attribute, attributes[attribute]);
             }
@@ -1134,7 +1137,7 @@ var utils = utils || {};
         e.setAttributeNS(null, "y", y);
         e.setAttributeNS(null, "width", width);
         e.setAttributeNS(null, "height", height);
-        if (attributes != null) {
+        if (attributes !== null) {
             for (var attribute in attributes) {
                 e.setAttributeNS(null, attribute, attributes[attribute]);
             }
@@ -1157,12 +1160,13 @@ var utils = utils || {};
      * @param {Object} days
      */
     u.setCookie = function(name, value, days) {
+        var expires;
         if (days) {
             var date = new Date();
             date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            var expires = "; expires=" + date.toGMTString();
+            expires = "; expires=" + date.toGMTString();
         } else
-            var expires = "";
+            expires = "";
         document.cookie = name + "=" + value + expires + "; path=/";
     };
 
@@ -1172,7 +1176,7 @@ var utils = utils || {};
         for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
             while (c.charAt(0) == ' ')
-            c = c.substring(1, c.length);
+                c = c.substring(1, c.length);
             if (c.indexOf(nameEQ) == 0)
                 return c.substring(nameEQ.length, c.length);
         }
@@ -1225,8 +1229,8 @@ var utils = utils || {};
             var bin = d3histObj[i];
             var binCount = bin.length;
             counts.push({
-                'bin' : i,
-                'count' : binCount
+                'bin': i,
+                'count': binCount
             });
         }
 
@@ -1234,7 +1238,7 @@ var utils = utils || {};
         for (var i = 0; i < counts.length; i++) {
             var data = counts[i];
             data.probability = data.count / vector.length;
-            data.prod = (data.probability == 0 ) ? 0 : (data.probability * Math.log2(data.probability));
+            data.prod = (data.probability == 0) ? 0 : (data.probability * Math.log2(data.probability));
 
             sum = sum + data.prod;
         }
@@ -1302,7 +1306,7 @@ var utils = utils || {};
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
             var probability = freqTable[key] / vector1.length;
-            var product = (probability == 0 ) ? 0 : (probability * Math.log2(probability));
+            var product = (probability == 0) ? 0 : (probability * Math.log2(probability));
             sum = sum + product;
         }
 
@@ -1318,7 +1322,7 @@ var utils = utils || {};
      */
     u.mutualInformation = function(vector1, vector2, numBins) {
         var mi = null;
-        var numBins = ( typeof numBins === 'undefined') ? vector1.length : numBins;
+        var numBins = (typeof numBins === 'undefined') ? vector1.length : numBins;
 
         var d3Hist = d3.layout.histogram().bins(numBins).frequency(false);
 
@@ -1337,7 +1341,7 @@ var utils = utils || {};
     // event handler for tab keydown events in textarea elements
     // document.querySelector("textarea").addEventListener('keydown', u.handleTabsAsText, false);
     u.handleTabsAsText = function(e) {
-        if (e.keyCode === 9) {// tab was pressed
+        if (e.keyCode === 9) { // tab was pressed
             // get caret position/selection
             var start = this.selectionStart;
             var end = this.selectionEnd;
